@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main() {
-  char palabra[128];
-  printf("Escribe la palabra que se adivinara: ");
+int main(int argc, char **argv) {
+  //printf("Escribe la palabra que se adivinara: ");
   fflush(stdout); //Esto función sirve para almacenar//
-  scanf(" %s", palabra);
+  //scanf(" %s", palabra);
+  char *palabra = argv[1];
 
   int N = strlen(palabra);
   int ocultar[N];
@@ -43,6 +43,5 @@ int main() {
     }
   }
   printf("¡Correcto! La palabra es \"%s\".\n", palabra);
-
   return 0;
 }
