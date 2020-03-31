@@ -1,46 +1,48 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int main() {
-  char answer[128];
-  printf("Escribe la palabra:  ");
-  fflush(stdout); //Sirve para almacenar//
-  scanf(" %s", answer);
-  int N = strlen(answer);
+  char palabra[128];
+  printf("Escribe la palabra que se adivinara: ");
+  fflush(stdout);
+  scanf(" %s", palabra);
+
+  int N = strlen(palabra);
   int mask[N];
   for (int i=0; i < N; ++i) {
     mask[i] = 0;
   }
   int gameover = 0;
   while (! gameover) {
-    printf("La palabra es: ");
-    for(int j=0; j < N; ++j) {
-      if (mask[j]) {
-        printf("%c", answer[j]);
+    printf("La palabra tiene: ");
+    for(int b=0; b < N; ++b) {
+      if (mask[b]) {
+        printf("%c", palabra[b]);
       }
       else {
         printf("*");
       }
     }
     printf("\n");
-    char guess;
-    printf("Escribe una letra:  ");
+    char incog;
+    printf("¿Letra?: ");
     fflush(stdout);
-    scanf(" %c", &guess);
-    for(int k=0; k < N; ++k) {
-      if (answer[k] == guess) {
-	mask[k] = 1;
+    scanf(" %c", &incog);
+    for(int a=0; a < N; ++a) {
+      if (palabra[a] == incog) {
+	mask[a] = 1;
       }
     }
     gameover = 1;
-    for(int m = 0; m < N; ++m) {
-      if (!mask[m]) {
+    for(int n = 0; n < N; ++n) {
+      if (!mask[n]) {
         gameover = 0;
         break;
       }
     }
   }
-  printf("Ganaste!, la palabra es: \"%s\".\n", answer);
+  printf("¡Correcto! La palabra es \"%s\".\n", palabra);
 
   return 0;
 }
