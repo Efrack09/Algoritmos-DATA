@@ -5,19 +5,19 @@
 int main() {
   char palabra[128];
   printf("Escribe la palabra que se adivinara: ");
-  fflush(stdout);
+  fflush(stdout); //Esto función sirve para almacenar//
   scanf(" %s", palabra);
 
   int N = strlen(palabra);
-  int mask[N];
+  int ocultar[N];
   for (int i=0; i < N; ++i) {
-    mask[i] = 0;
+    ocultar[i] = 0;
   }
   int gameover = 0;
   while (! gameover) {
     printf("La palabra tiene: ");
     for(int b=0; b < N; ++b) {
-      if (mask[b]) {
+      if (ocultar[b]) {
         printf("%c", palabra[b]);
       }
       else {
@@ -27,16 +27,16 @@ int main() {
     printf("\n");
     char incog;
     printf("¿Letra?: ");
-    fflush(stdout);
+    fflush(stdout); //Almacenamiento// 
     scanf(" %c", &incog);
     for(int a=0; a < N; ++a) {
       if (palabra[a] == incog) {
-	mask[a] = 1;
+	ocultar[a] = 1;
       }
     }
     gameover = 1;
     for(int n = 0; n < N; ++n) {
-      if (!mask[n]) {
+      if (!ocultar[n]) {
         gameover = 0;
         break;
       }
